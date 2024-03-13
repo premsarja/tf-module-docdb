@@ -7,7 +7,7 @@ resource "aws_docdb_cluster" "docdb" {
   preferred_backup_window = "07:00-09:00"
   skip_final_snapshot     = true      # in production the value will be FALSE
   db_subnet_group_name    ="aws_db_subnet_group.docdb.name"
-  vpc_security_group_ids = "aws_security_group.allow_docdb.id"
+  vpc_security_group_ids = "aws_security_group.allows_docdb.id"
 }
 
 #CREATES THE INSTANCE CLUSTER
