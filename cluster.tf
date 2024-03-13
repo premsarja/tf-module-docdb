@@ -11,7 +11,7 @@ resource "aws_docdb_cluster" "docdb" {
 
 #CREATES THE INSTANCE CLUSTER
 
-resource "aws_docdb_cluster_instance" "docdb" {
+resource "aws_docdb_cluster_instance" "cluster_instance" {
   count              = 1
   identifier         = "roboshop-${var.ENV}-docdb"
   cluster_identifier = aws_docdb_cluster.docdb.id
