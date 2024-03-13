@@ -9,7 +9,14 @@ resource "aws_docdb_cluster" "docdb" {
   db_subnet_group_name    =aws_db_subnet_group.docdb.name
 }
 
+#CREATES THE INSTANCE CLUSTER
 
+resource "aws_docdb_cluster_instance" "docdb" {
+  count              = 1
+  identifier         = "roboshop-${var.ENV}-docdb"
+  cluster_identifier = aws_docdb_cluster.docdb.id
+  instance_class     = "db.t3.large"
+}
 # CREATES DOCDB SUBNET GROUP
 
 resource "aws_db_subnet_group" "docdb" {
