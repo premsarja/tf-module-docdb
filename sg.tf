@@ -1,6 +1,6 @@
 
-resource "aws_security_group" "allow_docdb" {
-  name        = "roboshopallows internal traffic"
+resource "aws_security_group" "allows_docdb" {
+  name        = "roboshop allows internal traffic"
   description = "Allow private traffics"
   vpc_id =   data.terraform_remote_state.vpc.outputs.VPC_ID
 
@@ -9,7 +9,7 @@ resource "aws_security_group" "allow_docdb" {
     from_port   = 27017
     to_port     = 27017
     protocol    = "tcp"
-    cidr_blocks = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS
+    cidr_blocks = [data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS]
   }
 
   egress {
