@@ -6,7 +6,7 @@ resource "aws_docdb_cluster" "docdb" {
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
   skip_final_snapshot     = true      # in production the value will be FALSE
-  db_subnet_group_name    ="aws_db_subnet_group.docdb.name"
+  db_subnet_group_name    =aws_db_subnet_group.docdb.name
   vpc_security_group_ids = [aws_security_group.allows_docdb.id]
 }
 
