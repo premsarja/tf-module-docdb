@@ -23,16 +23,3 @@ resource "aws_db_subnet_group" "docdb" {
 
 # reads the info from the   remote statefile
 
-data "terraform_remote_state" "vpc" {
-    backend = "s3"
-    config ={
-      
-      bucket = "prems"
-      key    = "vpc/${var.ENV}/terraform.tfstate"
-      region = "us-east-1"
-
-    }
-  
-}
-
-data.terraform_remote_state.vpc.output.VP
