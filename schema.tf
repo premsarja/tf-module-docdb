@@ -9,7 +9,8 @@ resource "null_resource" "schema" {
       unzip -o /tmp/mongodb.zip
       cd mongodb-main
       ls -ltr   
-      mongo --ssl --host roboshop-dev-docdb.cf6ic4gs8isj.us-east-1.docdb.amazonaws.com:27017 --sslCAFile global-bundle.pem --username prem --password premsagar < catalogue.js
+      mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile global --password premsagar < catalogue.js
+      mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile global-bundle.pem --username prem --password premsagar < users.js 
  
     EOF
   }
