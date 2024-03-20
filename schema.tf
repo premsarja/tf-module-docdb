@@ -1,5 +1,5 @@
 resource "null_resource" "schema" {
-  depends_on = [aws_db_instance.mysql]
+  depends_on = [aws_docdb_cluster.docdb.aws_docdb_cluster_instance.cluster_instance]
 
   provisioner "local-exec" {
     command = <<-EOF
