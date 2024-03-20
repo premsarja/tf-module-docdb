@@ -1,4 +1,4 @@
-  resource "aws_docdb_cluster" "docdb" {
+resource "aws_docdb_cluster" "docdb" {
   cluster_identifier      = "roboshop-${var.ENV}-docdb"
   engine                  = "docdb"
   master_username         = "prem"
@@ -6,14 +6,14 @@
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
   skip_final_snapshot     = true      # in production the value will be FALSE
-  db_subnet_group_name    =aws_db_subnet_group.docdb.name
-  vpc_security_group_ids = [aws_security_group.allows_docdb.id]
+  db_subnet_group_name    = aws_db_subnet_group.docdb.name
+  vpc_security_group_ids  = [aws_security_group.allows_docdb.id]
 }
 
 #CREATES THE INSTANCE CLUSTER
 
 resource "aws_docdb_cluster_instance" "cluster_instance" {
-  count              = 1
+  count              = var.DOCDB_INSTANCE_COUNT
   identifier         = "roboshop-${var.ENV}-docdb"
   cluster_identifier = aws_docdb_cluster.docdb.id
   instance_class     = "db.t3.medium"
