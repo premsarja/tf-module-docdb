@@ -13,7 +13,7 @@ resource "aws_docdb_cluster" "docdb" {
 #CREATES THE INSTANCE CLUSTER
 
 resource "aws_docdb_cluster_instance" "cluster_instance" {
-  count              = 1
+  count              = var.DOCDB_INSTANCE_COUNT
   identifier         = "roboshop-${var.ENV}-docdb"
   cluster_identifier = aws_docdb_cluster.docdb.id
   instance_class     = var.DOCDB_INSTANCE_TYPE
