@@ -18,8 +18,8 @@ resource "null_resource" "schema" {
       ls -ltr   
       
       # Execute MongoDB commands
-      mongo --tls --host ${aws_docdb_cluster.docdb.endpoint} --tlsCAFile global-bundle.pem --username prem --password premsagar < catalogue.js
-      mongo --tls --host ${aws_docdb_cluster.docdb.endpoint} --tlsCAFile global-bundle.pem --username prem --password premsagar < users.js 
+      mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile global-bundle.pem --username prem --password premsagar < catalogue.js
+      mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile global-bundle.pem --username prem --password premsagar < users.js 
     EOF
   }
 }
