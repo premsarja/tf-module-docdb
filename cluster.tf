@@ -16,7 +16,7 @@ resource "aws_docdb_cluster_instance" "cluster_instance" {
   count              = var.DOCDB_INSTANCE_COUNT
   identifier         = "roboshop-${var.ENV}-docdb"
   cluster_identifier = aws_docdb_cluster.docdb.id
-  instance_class     = "db.t3.medium"
+  instance_class     = var.DOCDB_INSTANCE_TYPE
 }
 # CREATES DOCDB SUBNET GROUP
 
