@@ -8,7 +8,6 @@ resource "null_resource" "schema" {
       curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
       unzip -o /tmp/mongodb.zip
       cd mongodb-main
-      ls -ltr   
       mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile /tmp/global-bundle.pem --username prem --password premsagar < catalogue.js
       mongo --ssl --host ${aws_docdb_cluster.docdb.endpoint} --sslCAFile /tmp/global-bundle.pem --username prem --password premsagar < users.js 
     EOF
