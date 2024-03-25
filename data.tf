@@ -11,7 +11,7 @@ data "terraform_remote_state" "vpc" {
 # fetches the secret informatiuon from secret
 
 data "aws_secretsmanager_secret" "secret" {
-  name = "robot/secrets"  
+  name = "robot/secrects"  
 }
 
 # fetches the info from the above secret
