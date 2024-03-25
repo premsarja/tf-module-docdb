@@ -1,4 +1,5 @@
-creates record internal aws_route53_record
+# creates record internal aws_route53_record
+
  resource "aws_route53_record" "docdb" {
   zone_id = data.terraform_remote_state.vpc.outputs.PRIVATE_HOSTED_ZONE_ID
   name    = "mongodb-${var.ENV}.${data.terraform_remote_state.vpc.outputs.PRIVATE_HOSTED_ZONE_NAME}"
