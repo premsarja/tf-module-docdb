@@ -1,8 +1,8 @@
 resource "aws_docdb_cluster" "docdb" {
   cluster_identifier      = "roboshop-${var.ENV}-docdb"
   engine                  = "docdb"
-  master_username         = "prem"
-  master_password         = "premsagar"
+  master_username         = jsondecode(data.aws_secretsmanager_secret_version.secret_version.secret_string)["DOCDB_USERNAME"]
+  master_password         = jsondecode(data.aws_secretsmanager_secret_version.secret_version.secret_string)["DOCDB_PASSWORD"]
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
   skip_final_snapshot     = true      # in production the value will be FALSE
